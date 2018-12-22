@@ -27,11 +27,17 @@
 #define DESCRIPTION     A compact ortholinear keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 1
+#define MATRIX_ROWS 5
 #define MATRIX_COLS 1
 
-#define MATRIX_ROW_PINS { B9 }
-#define MATRIX_COL_PINS { B0 }
+#define MATRIX_ROW_PINS { B8, B13, B14, B15, B9 }
+#define MATRIX_COL_PINS { B6 }
+
+// #define MATRIX_ROWS 5
+// #define MATRIX_COLS 12
+//
+// #define MATRIX_ROW_PINS { B8, B13, B14, B15, B9 }
+// #define MATRIX_COL_PINS { B6, B5, B4, B3, B2, B1, B0, A4, A5, A6, A7, A8 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 6
@@ -117,4 +123,3 @@
 // #define WS2812_DMA_STREAM STM32_DMA1_STREAM2  // DMA stream for TIMx_UP (look up in reference manual under DMA Channel selection)
 //#define WS2812_DMA_CHANNEL 7                  // DMA channel for TIMx_UP
 //#define WS2812_EXTERNAL_PULLUP
-

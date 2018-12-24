@@ -16,3 +16,5 @@
 
 #pragma once
 #include "quantum.h"
+
+#define KEYMAP(K000) { { K000 } }

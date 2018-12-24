@@ -27,11 +27,11 @@
 #define DESCRIPTION     A compact ortholinear keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 5
+#define MATRIX_ROWS 1
 #define MATRIX_COLS 1
 
-#define MATRIX_ROW_PINS { B8, B13, B14, B15, B9 }
-#define MATRIX_COL_PINS { B6 }
+#define MATRIX_ROW_PINS { B8 }
+#define MATRIX_COL_PINS { B13 }
 
 // #define MATRIX_ROWS 5
 // #define MATRIX_COLS 12

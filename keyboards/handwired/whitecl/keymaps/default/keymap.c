@@ -10,10 +10,10 @@
 #define _ADJUST 16
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  LOWER,
+  LOWER = SAFE_RANGE,
   RAISE,
-  BACKLIT
+  STANDUP,
+  OUT
 };
 
 #define KC_L1 LOWER
@@ -105,9 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12 ,
-  _______, RESET,   _______, KC_EJCT, _______, _______, _______, _______, _______, _______, _______, KC_DEL ,
+  _______, RESET,   _______, KC_EJCT, _______, _______, _______, _______, _______, OUT,     _______, KC_DEL ,
   _______, _______, KC_SLEP, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, STANDUP, _______, _______, _______, _______,
   _______, _______, _______, _______, _______,     _______,      _______, _______, KC_BRIU, KC_BRID, _______
 )
 
@@ -131,22 +131,8 @@ float tone_goodbye[][2] = SONG(GOODBYE_SOUND);
 float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
 #endif
 
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-        case QWERTY:
-          if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_qwerty);
-            #endif
-            persistent_default_layer_set(1UL<<_QWERTY);
-          }
-          return false;
-          break;
         case LOWER:
           if (record->event.pressed) {
             layer_on(_LOWER);
@@ -167,16 +153,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case BACKLIT:
+        case STANDUP:
           if (record->event.pressed) {
-            register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
-          } else {
-            unregister_code(KC_RSFT);
+            // when keycode STANDUP is pressed
+            SEND_STRING(SS_LGUI(" "));
+            SEND_STRING("ZoomStandup" SS_TAP(X_ENTER));
           }
-          return false;
+          break;
+        case OUT:
+          if (record->event.pressed) {
+            // when keycode OUT is pressed
+            SEND_STRING("/me out" SS_TAP(X_ENTER));
+          }
           break;
       }
     return true;

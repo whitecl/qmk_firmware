@@ -19,6 +19,9 @@ enum custom_keycodes {
 
 #define KC_L1 LOWER
 #define KC_L2 RAISE
+#define IN_LEFT LGUI(KC_LBRC)
+#define COMMENT LGUI(KC_SLSH)
+#define IN_RGHT LGUI(KC_RBRC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -66,8 +69,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_PPLS, KC_EQL,
   _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_PIPE,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_QUOT, KC_DQUO,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLSH, KC_BSLS,
-  _______, _______, _______, _______, _______,     KC__MUTE,     _______, KC_MNXT, KC_VOLU, KC_VOLD, KC_MPLY
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_QUES, KC_SLSH, KC_BSLS,
+  _______, _______, _______, _______, _______,     KC__MUTE,     _______, _______, IN_LEFT, COMMENT, IN_RGHT
 ),
 
 /* Raise
@@ -88,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_PGDN, KC_7,    KC_8,    KC_9,    _______, _______, _______, _______, _______, _______, _______, KC_F12,
   KC_HOME, KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, _______, _______,
   KC_END,  KC_1,    KC_2,    KC_3,    _______, _______, _______, _______, _______, _______, KC_VOLU, _______,
-  _______, KC_0,    KC_0,    KC_DOT,  _______,     _______,      _______, _______, KC_MNXT, KC_VOLD, KC_MPLY
+  _______, KC_0,    KC_0,    KC_DOT,  _______,     KC_MUTE,      _______, _______, KC_MNXT, KC_VOLD, KC_MPLY
 ),
 
 /* Adjust (Lower + Raise)
